@@ -17,5 +17,6 @@ public class PlayerShips : ScriptableObject
     public bool hasWeaponOnLeftPylon;
     public bool hasWeaponOnRightPylon;
     public bool hasWeaponOnMiddlePylon;
+    public bool ShiphasSecondaryWeapon;
     
 }

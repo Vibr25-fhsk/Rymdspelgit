@@ -25,10 +25,19 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Fire",
+                    "name": "PirmaryFire",
                     "type": "Button",
                     "id": "eb4faafe-bdca-4f6d-94f5-eb4bafd1385d",
-                    "expectedControlType": "Button",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SeconderyFire",
+                    "type": "Button",
+                    "id": "49b98059-17a4-41b4-a70d-1ab51a25795a",
+                    "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -207,7 +216,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Gamepad",
-                    "action": "Fire",
+                    "action": "PirmaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -218,7 +227,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
-                    "action": "Fire",
+                    "action": "PirmaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -229,7 +238,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": ";Touch",
-                    "action": "Fire",
+                    "action": "PirmaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -240,7 +249,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Joystick",
-                    "action": "Fire",
+                    "action": "PirmaryFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -251,7 +260,51 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "XR",
-                    "action": "Fire",
+                    "action": "PirmaryFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d487e8c4-3797-400c-9a98-269473f3e32b",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "SeconderyFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a2baa4bc-9c7a-438b-bfa3-013961fd5d00",
+                    "path": "<Gamepad>/leftTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Gamepad",
+                    "action": "SeconderyFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "33361e21-ca49-4492-808d-6b2044f8ea4c",
+                    "path": "<Joystick>/trigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Joystick",
+                    "action": "SeconderyFire",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "f1f1296a-0ee0-4780-9708-1093ab466c9b",
+                    "path": "<XRController>/{SecondaryAction}",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";XR",
+                    "action": "SeconderyFire",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

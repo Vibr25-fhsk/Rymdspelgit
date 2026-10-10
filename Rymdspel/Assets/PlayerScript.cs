@@ -27,28 +27,47 @@ public class PlayerScript : MonoBehaviour
     {
         moveInput = context.ReadValue<Vector2>();
     }
-    public void Fire(InputAction.CallbackContext context)
+    public void PrimaryFire(InputAction.CallbackContext context)
     {
 
         if(playerShip.ShiphasWeapon == true)
         {
-            if (context.performed)
+            if (context.started)
+            {
+                if (playerShip.hasWeaponOnMiddlePylon == true)
+                {
+                    Debug.Log("Firing Middle Pylon Weapon");
+                }
+                if(playerShip.ShiphasSecondaryWeapon == false)
+                {
+                    if (playerShip.hasWeaponOnLeftPylon == true)
+                    {
+                        Debug.Log("Firing Left Pylon Weapon");
+                    }
+                    if (playerShip.hasWeaponOnRightPylon == true)
+                    {
+                        Debug.Log("Firing Right Pylon Weapon");
+                    }
+                    
+                }
+            }
+        }   
+    }
+    public void SecondaryFire(InputAction.CallbackContext context)
+    {
+        if(playerShip.ShiphasSecondaryWeapon == true)
+        {
+            if (context.started)
             {
                 if (playerShip.hasWeaponOnLeftPylon == true)
                 {
-                    
                     Debug.Log("Firing Left Pylon Weapon");
                 }
                 if (playerShip.hasWeaponOnRightPylon == true)
                 {
                     Debug.Log("Firing Right Pylon Weapon");
                 }
-                if (playerShip.hasWeaponOnMiddlePylon == true)
-                {
-                    Debug.Log("Firing Middle Pylon Weapon");
-                }
             }
         }
-        
     }
 }
