@@ -4,9 +4,12 @@ using UnityEngine;
 public class PlayerShipweapons : ScriptableObject
 {
     public float Attackdmg;
+    //public Sprite WeaponSprite;
+    public GameObject WeaponPrefab;
     public Sprite WeaponSprite;
-    public Vector3 WeaponVector;
-    public float WeaponScuttleTime;
+    public float WeaponVelocity;
+    public float ScuttleTime;
+
     
     
 }

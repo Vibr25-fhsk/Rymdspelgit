@@ -128,6 +128,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509939134}
+  - component: {fileID: 509939135}
   m_Layer: 0
   m_Name: GamaManeger
   m_TagString: Untagged
@@ -150,6 +151,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &509939135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 509939133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2daf9c3886adce60b462b65906c2532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  playerShip: {fileID: 0}
+  Gunsight: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,15 +455,15 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -8613746428151470745, guid: a9d6192f05eacaccd83e1d4dde4a2870, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.98, y: 0.75}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
 --- !u!114 &823195883
 MonoBehaviour:
@@ -466,6 +481,9 @@ MonoBehaviour:
   playerShipSR: {fileID: 0}
   playerMoveSpeed: 0
   moveInput: {x: 0, y: 0}
+  playerShipWeapon: {fileID: 0}
+  Gunsight: {fileID: 0}
+  GunsightPos: {fileID: 0}
 --- !u!4 &823195884
 Transform:
   m_ObjectHideFlags: 0
@@ -494,9 +512,9 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 0.5
+  m_LinearDamping: 2
+  m_AngularDamping: 2
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -507,7 +525,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!114 &823195886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -557,7 +575,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 823195883}
         m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
-        m_MethodName: Fire
+        m_MethodName: PrimaryFire
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -609,11 +627,84 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 88fe63a4-f282-4594-ab37-41119409e360
     m_ActionName: UI/TrackedDeviceOrientation
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 823195883}
+        m_TargetAssemblyTypeName: PlayerScript, Assembly-CSharp
+        m_MethodName: SecondaryFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 49b98059-17a4-41b4-a70d-1ab51a25795a
+    m_ActionName: 'Player/SeconderyFire[/Mouse/rightButton]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!1001 &2011780810
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.56522
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.73784
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2062266833720879977, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893406257577450441, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+      propertyPath: m_Name
+      value: Gunsight
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -622,3 +713,4 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 509939134}
   - {fileID: 823195884}
+  - {fileID: 2011780810}
