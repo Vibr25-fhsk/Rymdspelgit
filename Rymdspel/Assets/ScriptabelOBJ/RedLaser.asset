@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5e9a7dce09a1cd6dbda932edcf3edd9, type: 3}
   m_Name: RedLaser
   m_EditorClassIdentifier: Assembly-CSharp::PlayerShipweapons
-  Attackdmg: 0
+  Attackdmg: 10
   WeaponPrefab: {fileID: 6839293876841017515, guid: d06afcbaf3c81b3bd86a38c842643ae6, type: 3}
   WeaponSprite: {fileID: 4058247577424173440, guid: 6aa9ec8258e435994a50856d305ebe3b, type: 3}
   WeaponVelocity: 10

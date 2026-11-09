@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53c85b2366f76ac7d9ee3a7b6f514a69, type: 3}
+  m_Name: Intercepter
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerShips
+  PlayerShipName: Intercepter
+  PlayerShipHealth: 0
+  PlayerShipSpeed: 5
+  PlayerShipSprite: {fileID: 8587340271344757162, guid: f898cee09146b264a8ca1b0dc206860f, type: 3}
+  RightPylon: {x: 0.4, y: 0, z: 0}
+  LeftPylon: {x: -0.4, y: 0, z: 0}
+  PlayerShipWeapon: {fileID: 11400000, guid: a5a18bcad08a173288fb562eefbc7553, type: 2}
+  PlayerShipWeaponCooldown: 0
+  ShiphasWeapon: 1
+  hasWeaponOnLeftPylon: 0
+  hasWeaponOnRightPylon: 0
+  ShiphasSecondaryWeapon: 0
+  Gunsight: {fileID: 8893406257577450441, guid: 186db31ee3aeb6cdaa98a5631d6b7d23, type: 3}
+  PylonOffset:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.2, y: 0, z: 0}
+  - {x: -0.2, y: 0, z: 0}
+  Pylon: {fileID: 426277924158135698, guid: dbceb5107742d0d3da6f1510c3c8e724, type: 3}

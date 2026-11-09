@@ -17,5 +17,7 @@ public class PlayerShips : ScriptableObject
     public bool hasWeaponOnRightPylon;
     public bool ShiphasSecondaryWeapon;
     public GameObject Gunsight;
+    //public GameObject[] PylonOffset;
     public Vector3[] PylonOffset;
+    public GameObject Pylon;
 }

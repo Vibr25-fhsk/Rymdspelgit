@@ -11,18 +11,28 @@ public class PlayerScript : MonoBehaviour
     public PlayerShipweapons playerShipWeapon;
     public GameObject Gunsight;
     public Transform GunsightPos;
+    public int PlayerHealth;
     Vector2 LastSightdirection;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject[] Pylons;
+    
+    
+
+    void Awake()
     {
+       
+        foreach (Vector3 offset in playerShip.PylonOffset)
+        {
+            Instantiate(playerShip.Pylon, transform.position + offset, transform.rotation, transform);
+            Pylons = GameObject.FindGameObjectsWithTag("Pylons");
+            
+        }
+
         playerShipWeapon = playerShip.PlayerShipWeapon;
         playerMoveSpeed = playerShip.PlayerShipSpeed;
         playerShipSR = GetComponent<SpriteRenderer>();
         playerShipSR.sprite = playerShip.PlayerShipSprite;
         playerRb = GetComponent<Rigidbody2D>();
-    }
-    void Awake()
-    {
+        PlayerHealth = playerShip.PlayerShipHealth;
         Gunsight = GameObject.Find("Gunsight");
         
         //Transform GunsightPos = Gunsight.transform;
@@ -56,9 +66,10 @@ public class PlayerScript : MonoBehaviour
         {
             if (context.started)
             {
-                foreach (Vector3 offset in playerShip.PylonOffset)
+                foreach (GameObject pylon in Pylons)
                 {
-                    GameObject weapon = Instantiate(playerShipWeapon.WeaponPrefab, transform.position + offset, transform.rotation);
+                    GameObject weapon = Instantiate(playerShipWeapon.WeaponPrefab, pylon.transform.position, pylon.transform.rotation, pylon.transform);
+                    weapon.transform.parent = null;
                     weapon.GetComponent<Rigidbody2D>().linearVelocity = this.transform.up * playerShipWeapon.WeaponVelocity;
                     weapon.GetComponent<SpriteRenderer>().sprite = playerShipWeapon.WeaponSprite;
                     Destroy(weapon, playerShipWeapon.ScuttleTime);
