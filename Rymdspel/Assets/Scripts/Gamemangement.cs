@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class Gamemangement : MonoBehaviour
 {
     public PlayerShips playerShips;
@@ -10,27 +11,43 @@ public class Gamemangement : MonoBehaviour
     //public GameObject[] EnemyShips;
     public GameObject[] EnemyShips;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    //public List<EnemyShipData> enemyShiplist;
+
+    void Awake()
+    {
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+    }
     void Start()
     {
-        if(EnemyCanSpawn == true)
+
+        if(SceneManager.GetActiveScene().name == "GameScene")
         {
-            StartCoroutine(EnemySpawner());
+            
+            if(EnemyCanSpawn == true)
+            {
+                StartCoroutine(EnemySpawner());
+            }
+            else
+            {
+                StopCoroutine(EnemySpawner());
+            }
+            
+            player = GameObject.FindWithTag("Player");
+            if(player == null)
+            {
+                GameObject player = Instantiate(playershipPrefab, transform.position, Quaternion.identity);
+            }
+            Gunsight = GameObject.Find("Gunsight");
+            if(Gunsight == null)
+            {
+                GameObject Gunsight = Instantiate(playerShips.Gunsight, transform.position, Quaternion.identity);
+            }
         }
-        else
-        {
-            StopCoroutine(EnemySpawner());
-        }
-        
-        player = GameObject.FindWithTag("Player");
-        if(player == null)
-        {
-            GameObject player = Instantiate(playershipPrefab, transform.position, Quaternion.identity);
-        }
-        Gunsight = GameObject.Find("Gunsight");
-        if(Gunsight == null)
-        {
-            GameObject Gunsight = Instantiate(playerShips.Gunsight, transform.position, Quaternion.identity);
-        }
+
 
     }
     public IEnumerator RandomEnemy()

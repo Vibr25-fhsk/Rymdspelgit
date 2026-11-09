@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 public class PlayerScript : MonoBehaviour
 {
 
@@ -14,12 +15,17 @@ public class PlayerScript : MonoBehaviour
     public int PlayerHealth;
     Vector2 LastSightdirection;
     public GameObject[] Pylons;
+    GameObject gameManager;
+    public Gamemangement gamemanegement;
     
     
-
+ 
     void Awake()
     {
-       
+        gameManager = GameObject.Find("GameManeger");
+        gamemanegement = gameManager.GetComponent<Gamemangement>();
+        playerShip = gamemanegement.playerShips;
+        ShipUppdate();
         foreach (Vector3 offset in playerShip.PylonOffset)
         {
             Instantiate(playerShip.Pylon, transform.position + offset, transform.rotation, transform);
@@ -39,6 +45,34 @@ public class PlayerScript : MonoBehaviour
         
 
     }
+       public void ShipUppdate()
+    {
+
+        if(Pylons != null)
+        {
+            foreach (GameObject pylon in Pylons)
+            {
+                Destroy(pylon);
+            }
+        }
+        if(Pylons == null)
+        {
+            foreach (Vector3 offset in playerShip.PylonOffset)
+            {
+                Instantiate(playerShip.Pylon, transform.position + offset, transform.rotation, transform);
+                Pylons = GameObject.FindGameObjectsWithTag("Pylons");
+                
+            }
+        }
+        playerShip = gamemanegement.playerShips;
+        playerShipWeapon = playerShip.PlayerShipWeapon;
+        playerMoveSpeed = playerShip.PlayerShipSpeed;
+        playerShipSR = GetComponent<SpriteRenderer>();
+        playerShipSR.sprite = playerShip.PlayerShipSprite;
+        playerRb = GetComponent<Rigidbody2D>();
+        PlayerHealth = playerShip.PlayerShipHealth;
+        //Gunsight = GameObject.Find("Gunsight"); 
+    }
 
     // Update is called once per frame·
     void Update()
@@ -57,12 +91,15 @@ public class PlayerScript : MonoBehaviour
     }
     public void Move(InputAction.CallbackContext context)
     {
-        moveInput = context.ReadValue<Vector2>();
+        if(SceneManager.GetActiveScene().name == "GameScene")
+        {
+            moveInput = context.ReadValue<Vector2>();
+        }
     }
     public void PrimaryFire(InputAction.CallbackContext context)
     {
 
-        if(playerShip.ShiphasWeapon == true)
+        if(playerShip.ShiphasWeapon == true && SceneManager.GetActiveScene().name == "GameScene")
         {
             if (context.started)
             {
@@ -81,7 +118,7 @@ public class PlayerScript : MonoBehaviour
     }
     public void SecondaryFire(InputAction.CallbackContext context)
     {
-        if(playerShip.ShiphasSecondaryWeapon == true)
+        if(playerShip.ShiphasSecondaryWeapon == true&& SceneManager.GetActiveScene().name == "GameScene")
         {
             if (context.started)
             {
